@@ -1,22 +1,21 @@
-name: Nginx 8.1
+name: Nginx 8.3
 
 on:
   workflow_dispatch:
 
 jobs:
   push:
-    name: "nginx-ptero:8.1"
+    name: "nginx-ptero:8.3"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
-      
+
       - uses: docker/setup-qemu-action@v3
 
       - uses: docker/setup-buildx-action@v3
         with:
-          version: "v0.5.1"
           buildkitd-flags: --debug
 
       - uses: docker/login-action@v3
@@ -32,4 +31,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/darksaid98/nginx-ptero:8.1
+            ghcr.io/darksaid98/nginx-ptero:8.3
